@@ -1,0 +1,39 @@
+" Use Vim settings, rather than Vi settings. This setting must be
+" as early as possible, as it has side effects.
+set nocompatible
+
+" Color scheme
+colorscheme darkspectrum
+
+" Can't remember what this does
+highlight Folded guibg=#0A0A0A guifg=#9090D0
+
+" disable colorcolumn. Syntastic complains anyway
+set colorcolumn=0
+
+" Autowrite all buffers when focus is lost
+au Bufleave * :wa
+au FocusLost * :wa
+au BufEnter * stopinsert
+
+" Font and fontsize
+set guifont=DejaVu\ Sans\ Mono:h13
+
+" Remove menubar and toolbar
+set guioptions-=m
+
+set relativenumber
+set nowrap
+
+" No Audio bell
+set vb
+
+" No toolbar
+set guioptions-=T
+set guioptions-=L
+set guioptions-=l
+set guioptions-=r
+set guioptions-=R
+
+" Use console dialogs
+set guioptions+=c

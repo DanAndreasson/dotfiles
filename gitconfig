@@ -1,9 +1,9 @@
 [init]
   templatedir = ~/.git_template
 [push]
-  default = current
+	default = simple
 [color]
-  ui = auto
+	ui = true
 [alias]
   aa = add --all
   ap = add --patch
@@ -24,3 +24,10 @@
   autosquash = true
 [include]
   path = ~/.gitconfig.local
+[user]
+	name = DanAndreasson
+	email = dan@danandreasson.se
+[credential]
+	helper = osxkeychain
+[hub]
+	protocol = https
