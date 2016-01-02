@@ -13,3 +13,5 @@ autoload -U compinit && compinit
 
 # Enable vi-mode
 bindkey -v
+
+source ~/.zshenv
