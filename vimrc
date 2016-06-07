@@ -1,6 +1,8 @@
 " Leader
 let mapleader = " "
 
+let g:python_host_prog='/usr/bin/python'
+
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -11,6 +13,8 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+
+au BufLeave,FocusLost,VimResized * :wa
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -76,7 +80,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 1
 endif
 
 " Make it obvious where 80 characters is
@@ -121,6 +125,15 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>a :call RunAllSpecs()<CR>
+
+let g:rspec_runner = "os_x_iterm2"
+
+let g:rspec_command = 'call Send_to_Tmux("clear && zeus rspec {spec}\n")'
+
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>

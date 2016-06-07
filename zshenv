@@ -4,6 +4,7 @@ export EDITOR=$VISUAL
 
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 
 # load rbenv if available
 eval "$(rbenv init - --no-rehash)"
