@@ -80,7 +80,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 1
+  let g:ctrlp_use_caching = 0
 endif
 
 " Make it obvious where 80 characters is
@@ -129,7 +129,8 @@ nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm2"
 
-let g:rspec_command = 'call Send_to_Tmux("clear && zeus rspec {spec}\n")'
+" let g:rspec_command = 'call Send_to_Tmux("clear && zeus rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("clear && spring rspec {spec}\n")'
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
