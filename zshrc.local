@@ -6,7 +6,7 @@ ZSH_THEME="materialshelldarka"
 CASE_SENSITIVE="false"
 
 # Plugins
-plugins+=(git zsh-completions colorize github brew osx zsh-syntax-highlighting)
+plugins=(git zsh-completions colorize github brew osx zsh-syntax-highlighting)
 
 autoload -U compinit && compinit
 
