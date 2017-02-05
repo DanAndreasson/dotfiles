@@ -12,5 +12,17 @@ eval "$(rbenv init - --no-rehash)"
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
+# Export yarn path
+export PATH="/usr/local/Cellar/node/7.4.0/bin:$PATH"
+export PATH="/usr/local/share/dotnet/bin:$PATH"
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+LESSPIPE=`which src-hilite-lesspipe.sh`
+
+export LESSOPEN="| ${LESSPIPE} %s"
+
+export LESS='-R'
+
+
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

@@ -4,8 +4,8 @@ set nocompatible
 set ttyfast
 set lazyredraw
 
-let g:python_host_skip_check = 1
-let g:python3_host_skip_check = 1
+let g:python_host_skip_check = 0
+let g:python3_host_skip_check = 0
 
 " Color scheme
 " colorscheme darkspectrum
@@ -15,12 +15,17 @@ let g:enable_bold_font = 1
 
 let g:deoplete#enable_at_startup = 1
 
+let g:UltiSnipsExpandTrigger="<C-j>"
+
+let g:jsx_ext_required = 0 
+
+nnoremap <leader>m :Emodel<CR>
+nnoremap <leader>c :Econtroller<CR>
+nnoremap <leader>v :Eview<CR>
+
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
 
 " Can't remember what this does
 highlight Folded guibg=#0A0A0A guifg=#9090D0
@@ -61,6 +66,18 @@ set guioptions+=c
 
 set wildignore+=*.class
 
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:airline_theme = "hybrid"
+
 :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " Change cursor shape between insert and normal mode in iTerm2.app
 if exists('$TMUX')
@@ -70,3 +87,5 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+set clipboard=unnamed

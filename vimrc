@@ -1,7 +1,7 @@
 " Leader
 let mapleader = " "
 
-let g:python_host_prog='/usr/bin/python'
+let g:python_host_prog='/usr/local/bin/python3'
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -83,6 +83,8 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+let g:ctrlp_working_path_mode = '0'
+
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
@@ -139,6 +141,9 @@ let g:tslime_always_current_window = 1
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
 
+" Let emmet expand by tab
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -152,11 +157,22 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+
+" Ragtag
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
+
+" Surround to make ERB tags, surroundable
+let b:surround_{char2nr('=')} = "<%= \r %>"
+let b:surround_{char2nr('-')} = "<% \r %>"
+
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+      \ {"regex": "possibly useless use of a variable in void context"}
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
