@@ -2,10 +2,7 @@
 " as early as possible, as it has side effects.
 set nocompatible
 set ttyfast
-set lazyredraw
-
-let g:python_host_skip_check = 0
-let g:python3_host_skip_check = 0
+" set lazyredraw
 
 " Color scheme
 " colorscheme darkspectrum
@@ -13,9 +10,24 @@ colorscheme hybrid_reverse
 
 let g:enable_bold_font = 1
 
-let g:deoplete#enable_at_startup = 1
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
-let g:UltiSnipsExpandTrigger="<C-j>"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+let g:UltiSnipsExpandTrigger="<C-n>"
+
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 let g:jsx_ext_required = 0 
 
@@ -23,7 +35,11 @@ nnoremap <leader>m :Emodel<CR>
 nnoremap <leader>c :Econtroller<CR>
 nnoremap <leader>v :Eview<CR>
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+endfunction
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
@@ -89,3 +105,4 @@ else
 endif
 
 set clipboard=unnamed
+

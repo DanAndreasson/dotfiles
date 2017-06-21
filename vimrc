@@ -1,7 +1,8 @@
 " Leader
 let mapleader = " "
 
-let g:python_host_prog='/usr/local/bin/python3'
+let g:python3_host_prog='/usr/local/bin/python3'
+let g:python_host_prog='/usr/local/bin/python'
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -16,7 +17,7 @@ set autowrite     " Automatically :write before running commands
 
 au BufLeave,FocusLost,VimResized * :wa
 
-" Switch syntax highlighting on, when the terminal has colors
+
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
@@ -167,12 +168,6 @@ let g:ragtag_global_maps = 1
 " Surround to make ERB tags, surroundable
 let b:surround_{char2nr('=')} = "<%= \r %>"
 let b:surround_{char2nr('-')} = "<% \r %>"
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-      \ {"regex": "possibly useless use of a variable in void context"}
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.

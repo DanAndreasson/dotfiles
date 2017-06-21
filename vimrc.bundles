@@ -46,7 +46,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'rainerborene/vim-reek'
 Plug 'burnettk/vim-angular'
-Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -56,6 +55,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'benekastah/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -67,6 +67,7 @@ Plug 'csscomb/vim-csscomb'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
+Plug 'leafgarland/typescript-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
