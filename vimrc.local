@@ -59,7 +59,8 @@ au BufEnter * stopinsert
 autocmd! BufWritePost,BufEnter * Neomake
 
 " Font and fontsize
-set guifont=DejaVu\ Sans\ Mono:h14
+" set guifont=Menlo:h16
+set guifont=Hack:h16
 
 " Remove menubar and toolbar
 set guioptions-=m
@@ -106,3 +107,5 @@ endif
 
 set clipboard=unnamed
 
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
