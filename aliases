@@ -15,10 +15,15 @@ alias rollback="bundle exec rake db:rollback"
 alias s="rspec"
 
 #neovim
-alias vim="nvim"
+# "alias vim="nvim"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+# Git
+alias gst="git status"
+alias gcm="git commit -m"
+alias gcam="git commit -am"
+alias gout="git checkout"
+alias gstats="git diff --stat master"
+alias ntc="name-that-color"

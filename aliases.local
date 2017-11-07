@@ -1,7 +1,0 @@
-# Git
-alias gst="git status"
-alias gcm="git commit -m"
-alias gcam="git commit -am"
-alias gout="git checkout"
-alias gstats="git diff --stat master"
-alias ntc="name-that-color"
