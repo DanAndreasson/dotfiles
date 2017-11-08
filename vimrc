@@ -60,6 +60,8 @@ let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_auto_open = 1
 let g:tsuquyomi_disable_quickfix = 1
 
+let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
+
 au BufLeave,FocusLost,VimResized * :wa
 
 " Allow stylesheets to autocomplete hyphenated words
