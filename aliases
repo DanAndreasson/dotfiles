@@ -15,7 +15,7 @@ alias rollback="bundle exec rake db:rollback"
 alias s="rspec"
 
 #neovim
-# "alias vim="nvim"
+alias vim="nvim"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
