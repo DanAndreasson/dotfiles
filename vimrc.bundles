@@ -52,6 +52,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'ap/vim-css-color'
+Plug 'kchmck/vim-coffee-script'
+
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -66,6 +68,7 @@ endif
 
 " For Typescript
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ianks/vim-tsx'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 Plug 'mhartington/deoplete-typescript'
