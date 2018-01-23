@@ -81,7 +81,7 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 let g:enable_bold_font = 1
-let g:jsx_ext_required = 0 
+let g:jsx_ext_required = 0
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -168,12 +168,16 @@ let b:surround_{char2nr('-')} = "<% \r %>"
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_section_b = ''
+let g:airline_section_z = ''
+let g:airline_section_y = ''
+let g:airline_section_x = ''
 let g:airline_theme = "hybrid"
