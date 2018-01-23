@@ -53,6 +53,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'ap/vim-css-color'
 Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-editors/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
 Plug 'matze/vim-move'
 
 if has('nvim')
