@@ -53,7 +53,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'ap/vim-css-color'
 Plug 'kchmck/vim-coffee-script'
-
+Plug 'matze/vim-move'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
