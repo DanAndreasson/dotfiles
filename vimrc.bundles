@@ -69,8 +69,10 @@ endif
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 
 " For Typescript
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'ianks/vim-tsx'
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" Plug 'ianks/vim-tsx'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 Plug 'mhartington/deoplete-typescript'

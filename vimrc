@@ -1,6 +1,7 @@
 " as early as possible, as it has side effects.
 set nocompatible
 set ttyfast
+set lazyredraw
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -66,6 +67,10 @@ au BufLeave,FocusLost,VimResized * :wa
 
 " Allow stylesheets to autocomplete hyphenated words
 autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+" set filetypes as typescript.jsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
+autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript.jsx
 
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
