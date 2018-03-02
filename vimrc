@@ -7,8 +7,14 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-colorscheme hybrid_reverse
+augroup nord
+    autocmd ColorScheme nord highlight MatchParen ctermbg=0 ctermfg=3
+augroup end
 
+colorscheme nord
+
+set gdefault
+set termguicolors
 set colorcolumn=0
 set textwidth=80
 set guifont=Hack:h16
