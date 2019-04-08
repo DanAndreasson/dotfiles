@@ -98,6 +98,11 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+
+function agr { ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"; }
+export -f agr
+
+
 # Enviroment
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
@@ -105,3 +110,4 @@ _load_settings "$HOME/.zsh/configs"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fpath+=${ZDOTDIR:-~}/.zsh_functions

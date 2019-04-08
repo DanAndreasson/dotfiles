@@ -14,19 +14,20 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+	editor = nvim
 [merge]
   ff = only
 [commit]
   template = ~/.gitmessage
 [fetch]
-  prune = true
+	prune = true
 [rebase]
   autosquash = true
 [include]
   path = ~/.gitconfig.local
 [user]
 	name = DanAndreasson
-	email = dan@danandreasson.se
+	email = dan@saits.se
 [credential]
 	helper = osxkeychain
 [hub]

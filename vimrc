@@ -14,6 +14,7 @@ augroup end
 colorscheme nord
 
 set gdefault
+set re=1
 set termguicolors
 set colorcolumn=0
 set textwidth=80
@@ -56,7 +57,7 @@ let g:deoplete#enable_refresh_always = 1
 let g:deoplete#max_abbr_width = 0
 let g:deoplete#max_menu_width = 0
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 
 let g:tern_request_timeout = 1
 let g:tern_request_timeout = 6000
@@ -67,6 +68,10 @@ let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_auto_open = 1
 let g:tsuquyomi_disable_quickfix = 1
 
+let g:mix_format_on_save = 1
+
+let g:SimpleSnippets_dont_remap_tab = 1
+
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 au BufLeave,FocusLost,VimResized * :wa
@@ -75,8 +80,8 @@ au BufLeave,FocusLost,VimResized * :wa
 autocmd FileType css,scss,sass setlocal iskeyword+=-
 
 " set filetypes as typescript.jsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
-autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript.jsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
+autocmd BufNewFile,BufRead *.ts, set filetype=typescript.jsx
 
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -106,6 +111,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+let test#strategy = "vimux"
+
+let test#elixir#exunit#executable = 'foreman run mix test'
+
+nmap <silent> <leader>n :TestNearest<CR>
+nmap <silent> <leader>f :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
 
 let g:move_key_modifier = 'A'
 
@@ -155,10 +169,10 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
+" nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+" nnoremap <Leader>s :call RunNearestSpec()<CR>
+" nnoremap <Leader>l :call RunLastSpec()<CR>
+" nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_runner = "os_x_iterm2"
 
@@ -177,18 +191,18 @@ let g:ragtag_global_maps = 1
 let b:surround_{char2nr('=')} = "<%= \r %>"
 let b:surround_{char2nr('-')} = "<% \r %>"
 
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_section_b = ''
-let g:airline_section_z = ''
-let g:airline_section_y = ''
-let g:airline_section_x = ''
-let g:airline_theme = "hybrid"
+" let g:airline#extensions#tabline#enabled = 0
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#right_sep = ''
+" let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_section_b = ''
+" let g:airline_section_z = ''
+" let g:airline_section_y = ''
+" let g:airline_section_x = ''
+" let g:airline_theme = "hybrid"
