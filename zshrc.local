@@ -13,4 +13,6 @@ autoload -U compinit && compinit
 # Enable vi-mode
 bindkey -v
 
+# . /usr/local/etc/profile.d/z.sh
+
 source ~/.zshenv
