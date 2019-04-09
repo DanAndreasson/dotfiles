@@ -98,11 +98,6 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-
-function agr { ag -0 -l "$1" | xargs -0 perl -pi.bak -e "s/$1/$2/g"; }
-export -f agr
-
-
 # Enviroment
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

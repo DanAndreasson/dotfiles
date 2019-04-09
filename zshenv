@@ -6,16 +6,15 @@ export EDITOR=$VISUAL
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 
-# load rbenv if available
-eval "$(rbenv init - --no-rehash)"
-
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
+# python 2
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
 # Export yarn path
-export PATH="/usr/local/Cellar/node/7.4.0/bin:$PATH"
-export PATH="/usr/local/share/dotnet/bin:$PATH"
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="/usr/local/Cellar/node/7.4.0/bin:$PATH"
+# export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 LESSPIPE=`which src-hilite-lesspipe.sh`
 
