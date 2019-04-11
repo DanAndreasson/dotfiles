@@ -123,8 +123,11 @@ nmap <silent> <leader>l :TestLast<CR>
 
 let g:move_key_modifier = 'A'
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+"
+" Fix files with prettier then eslint
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 augroup vimrcEx
   autocmd!
