@@ -80,8 +80,8 @@ au BufLeave,FocusLost,VimResized * :wa
 autocmd FileType css,scss,sass setlocal iskeyword+=-
 
 " set filetypes as typescript.jsx
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
-autocmd BufNewFile,BufRead *.ts, set filetype=typescript.jsx
+" autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+" autocmd BufNewFile,BufRead *.ts, set filetype=typescript.tsx
 
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -121,24 +121,33 @@ nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
+" nmap <silent> <leader>j <Plug>(ale_previous_wrap)
+" nmap <silent> <leader>k <Plug>(ale_next_wrap)
+
 let g:move_key_modifier = 'A'
 
 " let g:prettier#autoformat = 0
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 "
 " Fix files with prettier then eslint
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+" let g:ale_fixers = {'typescript': ['prettier', 'tslint'],'javascript': ['prettier', 'eslint']}
+" let g:ale_fix_on_save = 1
+" let g:ale_sign_column_always = 1
+" let g:ale_completion_enabled = 1
+" let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
+let g:used_javascript_libs = 'react,angular'
+ 
 augroup vimrcEx
   autocmd!
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+  " autocmd BufReadPost *
+  "       \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  "       \   exe "normal g`\"" |
+  "       \ endif
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
