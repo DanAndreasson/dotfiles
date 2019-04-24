@@ -121,8 +121,9 @@ nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
-" nmap <silent> <leader>j <Plug>(ale_previous_wrap)
-" nmap <silent> <leader>k <Plug>(ale_next_wrap)
+
+nmap <silent> <leader>j <Plug>(ale_previous_wrap)
+nmap <silent> <leader>k <Plug>(ale_next_wrap)
 
 let g:move_key_modifier = 'A'
 
@@ -130,11 +131,14 @@ let g:move_key_modifier = 'A'
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 "
 " Fix files with prettier then eslint
-" let g:ale_fixers = {'typescript': ['prettier', 'tslint'],'javascript': ['prettier', 'eslint']}
-" let g:ale_fix_on_save = 1
-" let g:ale_sign_column_always = 1
-" let g:ale_completion_enabled = 1
-" let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+let g:ale_fixers = {'typescript': ['prettier', 'tslint'],'javascript': ['prettier', 'eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+
+nmap gp <Plug>(ale_go_to_definition)
+nmap gr <Plug>(ale_find_references)
 
 let g:used_javascript_libs = 'react,angular'
  
