@@ -24,6 +24,7 @@ call plug#begin('~/.vim/bundle')
 
 
 Plug 'w0rp/ale'
+Plug 'AndrewRadev/tagalong.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
