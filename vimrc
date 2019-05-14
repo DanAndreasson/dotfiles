@@ -43,6 +43,7 @@ set splitbelow
 set splitright
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set diffopt+=vertical
+set autoread
 
 filetype plugin indent on
 
@@ -82,6 +83,10 @@ autocmd FileType css,scss,sass setlocal iskeyword+=-
 " set filetypes as typescript.jsx
 " autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 " autocmd BufNewFile,BufRead *.ts, set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *tsx.snap, set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *ts.snap, set filetype=typescript.ts
+autocmd BufNewFile,BufRead *js.snap, set filetype=typescript.js
+autocmd BufNewFile,BufRead *jsx.snap, set filetype=typescript.jsx
 
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -115,6 +120,7 @@ nnoremap <C-l> <C-w>l
 let test#strategy = "vimux"
 
 let test#elixir#exunit#executable = 'foreman run mix test'
+let test#javascript#jest#executable = 'yarn test --watchAll=false'
 
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>f :TestFile<CR>
@@ -122,14 +128,17 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
 
-nmap <silent> <leader>j <Plug>(ale_previous_wrap)
-nmap <silent> <leader>k <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 let g:move_key_modifier = 'A'
 
 " let g:prettier#autoformat = 0
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 "
+"
+" Fixes jumping gutters as ALE and nvim_ts competes
+let g:nvim_typescript#diagnostics_enable=0
 " Fix files with prettier then eslint
 let g:ale_fixers = {'typescript': ['prettier', 'tslint'],'javascript': ['prettier', 'eslint']}
 let g:ale_fix_on_save = 1
@@ -139,6 +148,7 @@ let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 nmap gp <Plug>(ale_go_to_definition)
 nmap gr <Plug>(ale_find_references)
+nmap gl :TSImport<CR>
 
 let g:used_javascript_libs = 'react,angular'
  
