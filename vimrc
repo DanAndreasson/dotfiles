@@ -224,6 +224,13 @@ nnoremap <expr> N 'nN'[v:searchforward]
 
 let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'tsx', 'typescript.tsx']
 
+" Use AG (silver-searcher) for Ack.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+nnoremap <Leader>s :Ack!<Space>
+
 " let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline#extensions#tabline#left_sep = ''

@@ -47,6 +47,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
+
 " Plug 'gregsexton/MatchTag'
 Plug 'Townk/vim-autoclose'
 " Plug 'vim-airline/vim-airline'
