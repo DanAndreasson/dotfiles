@@ -26,4 +26,5 @@ alias gcm="git commit -m"
 alias gcam="git commit -am"
 alias gout="git checkout"
 alias gstats="git diff --stat master"
+alias pushb='git push -u origin $(git rev-parse --abbrev-ref HEAD | tail -n 1)'
 alias ntc="name-that-color"

@@ -48,6 +48,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mileszs/ack.vim'
+Plug 'styled-components/vim-styled-components'
+Plug 'jparise/vim-graphql'
 
 " Plug 'gregsexton/MatchTag'
 Plug 'Townk/vim-autoclose'
@@ -79,9 +81,10 @@ endif
 
 " For Typescript
 " Plug 'Shougo/denite.nvim'
-Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins', 'for': ['typescript', 'typescript.tsx']}
+Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'typescript.tsx']}
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
 Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }

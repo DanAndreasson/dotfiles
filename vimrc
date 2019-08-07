@@ -18,7 +18,7 @@ set re=1
 set termguicolors
 set colorcolumn=0
 set textwidth=80
-set guifont=Hack:h16
+set guifont=Hack:h18
 set relativenumber
 set number
 set nowrap
@@ -140,7 +140,7 @@ let g:move_key_modifier = 'A'
 " Fixes jumping gutters as ALE and nvim_ts competes
 let g:nvim_typescript#diagnostics_enable=0
 " Fix files with prettier then eslint
-let g:ale_fixers = {'typescript': ['prettier', 'tslint'],'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {'typescript': ['tslint', 'prettier'],'javascript': ['eslint', 'prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 1
@@ -149,6 +149,8 @@ let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 nmap gp <Plug>(ale_go_to_definition)
 nmap gr <Plug>(ale_find_references)
 nmap gl :TSImport<CR>
+nmap gt :TSType<CR>
+nmap gd :ALEDetail<CR>
 
 let g:used_javascript_libs = 'react,angular'
  
