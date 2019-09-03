@@ -44,6 +44,8 @@ set splitright
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set diffopt+=vertical
 set autoread
+set ignorecase
+set smartcase
 
 filetype plugin indent on
 
