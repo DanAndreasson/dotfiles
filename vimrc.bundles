@@ -23,7 +23,6 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 
-Plug 'w0rp/ale'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thoughtbot/vim-rspec'
@@ -38,55 +37,33 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'flazz/vim-colorschemes'
-Plug 'othree/html5.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'burnettk/-angular'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'mhartington/oceanic-next'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'mileszs/ack.vim'
-Plug 'styled-components/vim-styled-components'
-Plug 'jparise/vim-graphql'
+Plug 'ryanoasis/vim-devicons'
 
-" Plug 'gregsexton/MatchTag'
 Plug 'Townk/vim-autoclose'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'enricobacis/vim-airline-clock'
-" Plug 'ap/vim-css-color'
-Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-editors/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 Plug 'matze/vim-move'
 Plug 'janko-m/vim-test'
 Plug 'benmills/vimux'
 Plug 'mhinz/vim-mix-format'
-Plug 'andreyorst/SimpleSnippets-snippets'
-Plug 'andreyorst/SimpleSnippets.vim'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" Plug 'carlitux/deoplete-ternjs'
- Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-
-" For Typescript
-" Plug 'Shougo/denite.nvim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'typescript.tsx']}
-Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
-Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-" Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
+
+Plug 'jparise/vim-graphql'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'styled-components/vim-styled-components'
+Plug 'mxw/vim-jsx'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
