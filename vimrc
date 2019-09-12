@@ -73,7 +73,7 @@ autocmd BufNewFile,BufRead *jsx.snap, set filetype=typescript.jsx
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-"
+
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
@@ -82,7 +82,7 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? "\<C-y>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
@@ -124,8 +124,8 @@ nmap <silent> <leader>l :TestLast<CR>
 
 
 " TODO FIND REPLACEMENT!!
-nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
 
 let g:move_key_modifier = 'A'
 
@@ -133,15 +133,7 @@ nmap gp <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 nmap gl <Plug>(coc-codeaction)
 nmap gt <Plug>(coc-definition)
-nnoremap <silent> gd :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+nmap gd <Plug>(coc-diagnostic-info)
 
 augroup vimrcEx
   autocmd!
@@ -221,5 +213,6 @@ nnoremap <Leader>s :Ack!<Space>
 
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
+  let g:webdevicons_enable_nerdtree = 0
   call webdevicons#refresh()
 endif
