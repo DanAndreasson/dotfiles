@@ -7,18 +7,19 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-augroup nord
-    autocmd ColorScheme nord highlight MatchParen ctermbg=0 ctermfg=3
-augroup end
 
-colorscheme nord
+set background=dark
+set termguicolors
+
+syntax on
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 set gdefault
-set re=1
-set termguicolors
 set colorcolumn=0
 set textwidth=80
-set guifont=Hack:h16
+set guifont=Hack:h18
 set relativenumber
 set number
 set nowrap
@@ -43,36 +44,18 @@ set splitbelow
 set splitright
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set diffopt+=vertical
+set autoread
+set ignorecase
+set smartcase
+set shortmess+=c
+set signcolumn=yes " always show signcolumns
 
 filetype plugin indent on
 
 let mapleader=" "
-let g:deoplete#auto_complete_delay=0
-let g:deoplete#auto_refresh_delay=100
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-let g:deoplete#sources#tss#javascript_support = 1
-let g:tsuquyomi_javascript_support = 1
-let g:tsuquyomi_auto_open = 1
-let g:tsuquyomi_disable_quickfix = 1
 
 let g:mix_format_on_save = 1
 
-let g:SimpleSnippets_dont_remap_tab = 1
-
-let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 au BufLeave,FocusLost,VimResized * :wa
 
@@ -80,21 +63,38 @@ au BufLeave,FocusLost,VimResized * :wa
 autocmd FileType css,scss,sass setlocal iskeyword+=-
 
 " set filetypes as typescript.jsx
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
-autocmd BufNewFile,BufRead *.ts, set filetype=typescript.jsx
+" autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+" autocmd BufNewFile,BufRead *.ts, set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *tsx.snap, set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *ts.snap, set filetype=typescript.ts
+autocmd BufNewFile,BufRead *js.snap, set filetype=typescript.js
+autocmd BufNewFile,BufRead *jsx.snap, set filetype=typescript.jsx
 
 " Use Ctrl-j & k to move up and down in deoplete
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-" Tab to move in deoplete
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
+
+" === Coc.nvim === "
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-y>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+"Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" === vim-jsx === "
+" Highlight jsx syntax even in non .jsx files
+let g:jsx_ext_required = 0
+
+" === javascript-libraries-syntax === "
+let g:used_javascript_libs = 'underscore,requirejs,chai,jquery'
 
 let g:enable_bold_font = 1
 let g:jsx_ext_required = 0
@@ -115,19 +115,25 @@ nnoremap <C-l> <C-w>l
 let test#strategy = "vimux"
 
 let test#elixir#exunit#executable = 'foreman run mix test'
+let test#javascript#jest#executable = 'yarn test --watchAll=false'
 
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
+
+" TODO FIND REPLACEMENT!!
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
+
 let g:move_key_modifier = 'A'
 
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
-"
-" Fix files with prettier then eslint
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+nmap gp <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+nmap gl <Plug>(coc-codeaction)
+nmap gt <Plug>(coc-definition)
+nmap gd <Plug>(coc-diagnostic-info)
 
 augroup vimrcEx
   autocmd!
@@ -135,10 +141,10 @@ augroup vimrcEx
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+  " autocmd BufReadPost *
+  "       \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  "       \   exe "normal g`\"" |
+  "       \ endif
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
@@ -161,9 +167,6 @@ let g:ctrlp_working_path_mode = '0'
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -194,18 +197,22 @@ let g:ragtag_global_maps = 1
 let b:surround_{char2nr('=')} = "<%= \r %>"
 let b:surround_{char2nr('-')} = "<% \r %>"
 
-" let g:airline#extensions#tabline#enabled = 0
-" let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tabline#left_sep = ''
-" let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#right_sep = ''
-" let g:airline#extensions#tabline#right_alt_sep = ''
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_section_b = ''
-" let g:airline_section_z = ''
-" let g:airline_section_y = ''
-" let g:airline_section_x = ''
-" let g:airline_theme = "hybrid"
+" Always search downwards/upwards
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
+
+
+let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'tsx', 'typescript.tsx']
+
+" Use AG (silver-searcher) for Ack.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+nnoremap <Leader>s :Ack!<Space>
+
+" Reload icons after init source
+if exists('g:loaded_webdevicons')
+  let g:webdevicons_enable_nerdtree = 0
+  call webdevicons#refresh()
+endif

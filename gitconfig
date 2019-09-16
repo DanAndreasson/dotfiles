@@ -32,3 +32,4 @@
 	helper = osxkeychain
 [hub]
 	protocol = https
+	host = ghe.spotify.net
