@@ -122,8 +122,6 @@ nmap <silent> <leader>f :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
-
-" TODO FIND REPLACEMENT!!
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
 
@@ -132,7 +130,7 @@ let g:move_key_modifier = 'A'
 nmap gp <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 nmap gl <Plug>(coc-codeaction)
-nmap gt <Plug>(coc-definition)
+nmap gt <Plug>(coc-type-definition)
 nmap gd <Plug>(coc-diagnostic-info)
 
 augroup vimrcEx
