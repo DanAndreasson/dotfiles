@@ -127,11 +127,20 @@ nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
 
 let g:move_key_modifier = 'A'
 
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 nmap gp <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 nmap gl <Plug>(coc-codeaction)
-nmap gt <Plug>(coc-type-definition)
-nmap gd <Plug>(coc-diagnostic-info)
+nmap gd <Plug>(coc-type-definition)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 augroup vimrcEx
   autocmd!
