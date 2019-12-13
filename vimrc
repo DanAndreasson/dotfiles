@@ -187,6 +187,10 @@ nnoremap <Down> :echoe "Use j"<CR>
 " nnoremap <Leader>l :call RunLastSpec()<CR>
 " nnoremap <Leader>a :call RunAllSpecs()<CR>
 
+
+let g:ctrlp_extensions = ['filer']
+nnoremap <C-n> :CtrlPFiler<CR>
+
 let g:rspec_runner = "os_x_iterm2"
 
 " let g:rspec_command = 'call Send_to_Tmux("clear && zeus rspec {spec}\n")'
