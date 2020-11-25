@@ -57,6 +57,9 @@ let mapleader=" "
 let g:mix_format_on_save = 1
 
 
+" Treat .sql as .pgsql
+let g:sql_type_default = 'pgsql'
+
 au BufLeave,FocusLost,VimResized * :wa
 
 " Allow stylesheets to autocomplete hyphenated words
@@ -115,6 +118,7 @@ nnoremap <C-l> <C-w>l
 let test#strategy = "vimux"
 
 let test#elixir#exunit#executable = 'foreman run mix test'
+let test#ruby#rspec#executable = './bin/rspec'
 let test#javascript#jest#executable = 'yarn test --watchAll=false'
 
 nmap <silent> <leader>n :TestNearest<CR>
