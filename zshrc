@@ -112,3 +112,5 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="$HOME/.bin:$PATH"
 
 source /Users/dan/.asdf/asdf.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
