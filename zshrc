@@ -110,6 +110,7 @@ export NVM_DIR="$HOME/.nvm"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export PATH="$HOME/.bin:$PATH"
+export PATH="$PATH:$(yarn global bin)"
 
 source /Users/dan/.asdf/asdf.sh
 

@@ -77,17 +77,19 @@ autocmd BufNewFile,BufRead *jsx.snap, set filetype=typescript.jsx
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" === Coc.nvim === "
-" use <tab> for trigger completion and navigate to next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-y>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -135,12 +137,14 @@ let g:move_key_modifier = 'A'
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
-nmap gp <Plug>(coc-definition)
+nmap gp <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 nmap gl <Plug>(coc-codeaction)
 nmap gd <Plug>(coc-type-definition)
@@ -169,8 +173,9 @@ if executable('ag')
 
 endif
 
+" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 " Use ctrl-p for fzf
-nmap <C-P> :GFiles<CR>
+nmap <C-P> :GFiles --cached --others --exclude-standard<CR>
 let g:fzf_layout = { 'down': '20%' }
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
