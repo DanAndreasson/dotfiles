@@ -49,6 +49,7 @@ set ignorecase
 set smartcase
 set shortmess+=c
 set signcolumn=yes " always show signcolumns
+set updatetime=100 " For gitgutter to show git markers
 
 filetype plugin indent on
 
