@@ -131,9 +131,9 @@ nmap <silent> <leader>l :TestLast<CR>
 
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>e <Plug>(coc-list-diagnostics)
 
 let g:move_key_modifier = 'A'
-
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -197,7 +197,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 let g:rspec_runner = "os_x_iterm2"
 
 " let g:rspec_command = 'call Send_to_Tmux("clear && zeus rspec {spec}\n")'
-let g:rspec_command = 'call Send_to_Tmux("clear && spring rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("clear && bundle exec rspec {spec}\n")'
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
