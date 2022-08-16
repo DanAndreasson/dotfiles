@@ -74,26 +74,17 @@ autocmd BufNewFile,BufRead *ts.snap, set filetype=typescript.ts
 autocmd BufNewFile,BufRead *js.snap, set filetype=typescript.js
 autocmd BufNewFile,BufRead *jsx.snap, set filetype=typescript.jsx
 
-" Use Ctrl-j & k to move up and down in deoplete
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+" Use Ctrl-j & k to move up and down in coc
+inoremap <expr> <C-j> coc#pum#visible() ? coc#pum#next(0) : "\<C-j>"
+inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(0) : "\<C-k>"
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-y>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" From https://github.com/neoclide/coc.nvim/pull/3862
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-"Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" remap for complete to use tab and <cr>
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " === vim-jsx === "
 " Highlight jsx syntax even in non .jsx files
@@ -202,9 +193,6 @@ let g:rspec_command = 'call Send_to_Tmux("clear && bundle exec rspec {spec}\n")'
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
 
-" Ragtag
-inoremap <M-o>       <Esc>o
-inoremap <C-j>       <Down>
 let g:ragtag_global_maps = 1
 
 " Surround to make ERB tags, surroundable
