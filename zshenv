@@ -22,6 +22,5 @@ export LESSOPEN="| ${LESSPIPE} %s"
 
 export LESS='-R'
 
-
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

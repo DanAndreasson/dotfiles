@@ -33,3 +33,5 @@
 [hub]
 	protocol = https
 	host = ghe.spotify.net
+[rerere]
+	enabled = true

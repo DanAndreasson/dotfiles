@@ -47,7 +47,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/pgsql.vim'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 Plug 'Townk/vim-autoclose'
 Plug 'elixir-editors/vim-elixir'

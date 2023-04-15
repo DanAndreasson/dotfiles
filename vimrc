@@ -80,9 +80,9 @@ inoremap <expr> <C-k> coc#pum#visible() ? coc#pum#prev(0) : "\<C-k>"
 
 " From https://github.com/neoclide/coc.nvim/pull/3862
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+inoremap <silent><expr> <C-x> coc#pum#visible() ? coc#pum#stop() : "\<C-x>"
 
-" remap for complete to use tab and <cr>
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
