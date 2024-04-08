@@ -6,6 +6,10 @@ alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
+# Tmux
+alias tx="tmuxinator"
+alias work="tmuxinator start learn2-api" # Starts api, which starts web
+
 # Bundler
 alias b="bundle"
 
