@@ -2,7 +2,6 @@
 set nocompatible
 set ttyfast
 set lazyredraw
-
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -218,3 +217,8 @@ if exists('g:loaded_webdevicons')
   let g:webdevicons_enable_nerdtree = 0
   call webdevicons#refresh()
 endif
+
+" Copilot
+let g:copilot#enable = 1
+inoremap <C-n> <Plug>(copilot-next)
+inoremap <C-p> <Plug>(copilot-previous)
