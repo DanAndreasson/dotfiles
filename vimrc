@@ -212,6 +212,22 @@ endif
 
 nnoremap <Leader>s :Ack!<Space>
 
+" maps leader i to create a new file in current directory (not the working directory, but the directory of the current file)
+nnoremap <leader>i :vsp <C-R>=expand("%:p:h") . "/" <CR>
+
+function! CreateFile(path)
+    " Split the path into directory and file parts
+    let s:dir = fnamemodify(a:path, ':h')
+    " Check if the directory exists, if not create it
+    if !isdirectory(s:dir)
+        call mkdir(s:dir, 'p')
+    endif
+    " Open the new file
+    exe 'vsp ' . a:path
+endfunction
+
+nnoremap <leader>o :call CreateFile(input('New file path: ', expand("%:p:h") . "/"))<CR>
+
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
   let g:webdevicons_enable_nerdtree = 0
