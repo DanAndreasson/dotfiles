@@ -212,9 +212,6 @@ endif
 
 nnoremap <Leader>s :Ack!<Space>
 
-" maps leader i to create a new file in current directory (not the working directory, but the directory of the current file)
-nnoremap <leader>i :vsp <C-R>=expand("%:p:h") . "/" <CR>
-
 function! CreateFile(path)
     " Split the path into directory and file parts
     let s:dir = fnamemodify(a:path, ':h')
@@ -222,10 +219,23 @@ function! CreateFile(path)
     if !isdirectory(s:dir)
         call mkdir(s:dir, 'p')
     endif
-    " Open the new file
-    exe 'vsp ' . a:path
+
+    if a:path == ""
+      return
+    endif
+
+    " Do we already have an extension?
+    if match(a:path, '\.') >= 0
+      " Open the new file
+      exe 'vsp ' . a:path
+    else
+      " Open the new file and append the current file's extension
+      exe 'vsp ' . a:path . '.' . expand("%:e")
+    endif
+
 endfunction
 
+" maps leader o to create a new file in current directory (not the working directory, but the directory of the current file)
 nnoremap <leader>o :call CreateFile(input('New file path: ', expand("%:p:h") . "/"))<CR>
 
 " Reload icons after init source
