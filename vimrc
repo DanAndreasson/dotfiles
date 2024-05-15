@@ -227,10 +227,10 @@ function! CreateFile(path)
     " Do we already have an extension?
     if match(a:path, '\.') >= 0
       " Open the new file
-      exe 'vsp ' . a:path
+      exe 'edit ' . a:path
     else
       " Open the new file and append the current file's extension
-      exe 'vsp ' . a:path . '.' . expand("%:e")
+      exe 'edit ' . a:path . '.' . expand("%:e")
     endif
 
 endfunction
