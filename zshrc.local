@@ -1,4 +1,5 @@
 # Export oh-my-zsh
+export LANG="en_US.UTF-8"
 export ZSH=/Users/dan/.oh-my-zsh
 
 ZSH_THEME="honukai"

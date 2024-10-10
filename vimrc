@@ -236,7 +236,7 @@ function! CreateFile(path)
 endfunction
 
 " maps leader o to create a new file in current directory (not the working directory, but the directory of the current file)
-nnoremap <leader>o :call CreateFile(input('New file path: ', expand("%:p:h") . "/"))<CR>
+nnoremap <leader>o :call CreateFile(input('New file path: ', expand("%:p:h") . "/", "file"))<CR>
 
 " Reload icons after init source
 if exists('g:loaded_webdevicons')

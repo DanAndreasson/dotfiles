@@ -48,6 +48,7 @@ Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/pgsql.vim'
 Plug 'github/copilot.vim'
+Plug 'robitx/gp.nvim' " chatGPT chat
 
 Plug 'elixir-editors/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
