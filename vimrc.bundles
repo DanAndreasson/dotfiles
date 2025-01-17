@@ -58,7 +58,6 @@ Plug 'benmills/vimux'
 Plug 'mhinz/vim-mix-format'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-Plug 'jparise/vim-graphql'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'

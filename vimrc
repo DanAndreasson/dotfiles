@@ -89,6 +89,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Highlight jsx syntax even in non .jsx files
 let g:jsx_ext_required = 0
 
+let g:graphql_javascript_functions = ['gql', 'graphql']
+
 " === javascript-libraries-syntax === "
 let g:used_javascript_libs = 'underscore,requirejs,chai,jquery'
 
@@ -122,8 +124,6 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>e <Plug>(coc-list-diagnostics)
-
-let g:move_key_modifier = 'A'
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
