@@ -164,11 +164,6 @@ if executable('ag')
 
 endif
 
-" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-" Use ctrl-p for fzf
-nmap <C-P> :GFiles --cached --others --exclude-standard<CR>
-let g:fzf_layout = { 'down': '20%' }
-
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
@@ -205,13 +200,6 @@ nnoremap <expr> N 'nN'[v:searchforward]
 
 let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'tsx', 'typescript.tsx']
 
-" Use AG (silver-searcher) for Ack.vim
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-nnoremap <Leader>s :Ack!<Space>
-
 function! CreateFile(path)
     " Split the path into directory and file parts
     let s:dir = fnamemodify(a:path, ':h')
@@ -247,4 +235,27 @@ endif
 " Copilot
 let g:copilot#enable = 1
 inoremap <C-n> <Plug>(copilot-next)
-inoremap <C-p> <Plug>(copilot-previous)
+
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = require('telescope.actions').move_selection_next,
+        ["<C-k>"] = require('telescope.actions').move_selection_previous,
+        ["<esc>"] = require('telescope.actions').close
+      },
+      n = {
+        ["<C-j>"] = require('telescope.actions').move_selection_next,
+        ["<C-k>"] = require('telescope.actions').move_selection_previous
+      }
+    }
+  }
+}
+
+require('telescope').load_extension('fzf')
+EOF
+
