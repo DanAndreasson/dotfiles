@@ -236,6 +236,9 @@ endif
 let g:copilot#enable = 1
 inoremap <C-n> <Plug>(copilot-next)
 
+" Copy current file path
+nnoremap <Leader>c :let @+=expand('%:.')<CR>
+
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 
