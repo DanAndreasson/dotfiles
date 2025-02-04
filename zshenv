@@ -24,3 +24,4 @@ export LESS='-R'
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
+[[ -f ~/.openai ]] && source ~/.openai
