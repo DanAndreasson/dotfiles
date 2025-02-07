@@ -35,3 +35,5 @@ alias pushb='git push -u origin $(git rev-parse --abbrev-ref HEAD | tail -n 1)'
 alias ntc="name-that-color"
 
 alias tmux='tmux -2'
+
+alias sprintlog='git --no-pager log --since="14 days ago" --pretty=format:"%C(yellow)%h%Creset - %C(cyan)%ad%Creset - %C(magenta)%<(20,trunc)%an%Creset: %s"  --date=short'
