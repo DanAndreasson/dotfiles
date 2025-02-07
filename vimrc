@@ -262,5 +262,9 @@ require('telescope').setup{
 require('telescope').load_extension('fzf')
 
 require('gitsigns').setup()
+
+require('git-conflict').setup()
+
+require('pqf').setup()
 EOF
 
