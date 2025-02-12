@@ -1,0 +1,21 @@
+# NOTE:
+# docs:
+# ghostty +show-config --default --docs | nvim
+
+# ghostty +list-fonts
+font-family = "Monaco"
+font-size = 12
+window-title-font-family = "Monaco"
+
+# macos-titlebar-style = tabs
+# macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = left
+
+font-thicken = false
+
+# ghostty +list-themes
+# theme = "Oceanic-Next"
+theme = "tokyonight"
+
+window-padding-x = 0
+window-padding-y = 0
