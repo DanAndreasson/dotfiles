@@ -2,26 +2,11 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- Telescope keymaps
--- local telescopeBuiltin = require("telescope.builtin")
--- local telescopeActions = require("telescope.actions")
---
--- vim.keymap.set("n", "<C-p>", telescopeBuiltin.find_files, { noremap = true, silent = true, desc = "Find Files" })
--- vim.keymap.set("n", "<leader>s", telescopeBuiltin.live_grep, { desc = "Telescope live grep" })
---
--- vim.keymap.set("n", "<C-j>", telescopeActions.move_selection_next, { noremap = true, silent = true, desc = "Move Selection Next" })
--- -- vim.keymap.set("n", "<C-k>", telescopeActions.move_selection_previous, { noremap = true, silent = true, desc = "Move Selection Previous" })
---
--- vim.keymap.set(
---   "i",
---   "<C-j>",
---   telescopeActions.move_selection_next,
---   { noremap = true, silent = true, desc = "Move Selection Next" }
--- )
--- vim.keymap.set(
---   "i",
---   "<C-k>",
---   telescopeActions.move_selection_previous,
---   { noremap = true, silent = true, desc = "Move Selection Previous" }
--- )
--- vim.keymap.set("i", "<esc>", telescopeActions.close, { noremap = true, silent = true, desc = "Close" })
+-- Jump back and forth between the last two files
+vim.keymap.set("n", "<leader><leader>", "<c-^>", { silent = true, nowait = true })
+
+-- Vimux
+vim.keymap.set("n", "<leader>n", ":TestNearest<CR>", { silent = true, nowait = true })
+vim.keymap.set("n", "<leader>f", ":TestFile<CR>", { silent = true, nowait = true })
+vim.keymap.set("n", "<leader>a", ":TestSuite<CR>", { silent = true, nowait = true })
+vim.keymap.set("n", "<leader>l", ":TestLast<CR>", { silent = true, nowait = true })

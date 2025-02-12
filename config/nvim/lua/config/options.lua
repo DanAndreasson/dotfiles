@@ -3,5 +3,9 @@
 -- Add any additional options here
 --
 vim.opt.smoothscroll = false
+vim.opt.cursorline = false
+vim.opt.laststatus = 2 -- Each split should have its own statusline
+
 vim.g.snacks_animate = false
 vim.g.lazyvim_picker = "telescope"
+vim.g["test#strategy"] = "vimux"
