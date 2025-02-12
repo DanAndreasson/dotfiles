@@ -45,8 +45,6 @@ Plug 'mhartington/oceanic-next', { 'branch': 'refactor' }
 Plug 'pangloss/vim-javascript'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/pgsql.vim'
-Plug 'github/copilot.vim'
-Plug 'robitx/gp.nvim' " chatGPT chat
 Plug 'yorickpeterse/nvim-pqf'
 
 Plug 'elixir-editors/vim-elixir'
@@ -56,6 +54,11 @@ Plug 'janko-m/vim-test'
 Plug 'benmills/vimux'
 Plug 'mhinz/vim-mix-format'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+" AI
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'olimorris/codecompanion.nvim'
+Plug 'github/copilot.vim'
 
 " telescope
 Plug 'nvim-lua/plenary.nvim'

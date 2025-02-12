@@ -266,5 +266,15 @@ require('gitsigns').setup()
 require('git-conflict').setup()
 
 require('pqf').setup()
-EOF
 
+require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "copilot",
+    },
+    inline = {
+      adapter = "copilot",
+    },
+  },
+})
+EOF
