@@ -1,7 +1,3 @@
-# NOTE:
-# docs:
-# ghostty +show-config --default --docs | nvim
-
 # ghostty +list-fonts
 font-family = "Monaco"
 font-size = 12
@@ -14,7 +10,7 @@ macos-option-as-alt = left
 font-thicken = false
 
 # ghostty +list-themes
-theme = "Oceanic-Next"
+theme = "tokyonight_moon"
 
 window-padding-x = 0
 window-padding-y = 0
