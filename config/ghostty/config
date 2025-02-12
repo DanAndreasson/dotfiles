@@ -14,8 +14,7 @@ macos-option-as-alt = left
 font-thicken = false
 
 # ghostty +list-themes
-# theme = "Oceanic-Next"
-theme = "tokyonight_moon"
+theme = "Oceanic-Next"
 
 window-padding-x = 0
 window-padding-y = 0
