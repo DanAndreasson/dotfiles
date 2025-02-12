@@ -1,0 +1,7 @@
+name: learn2-web
+root: ~/code/learn2-web
+
+windows:
+  - vim: nvim
+  - server: yarn install && yarn start
+  - git: tmuxinator start learn2-api

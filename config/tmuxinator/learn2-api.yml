@@ -1,0 +1,14 @@
+name: learn2-api
+root: ~/code/learn2-api
+
+windows:
+  - vim:
+      layout: 81a4,364x101,0,0{281x101,0,0,0,82x101,282,0,5}
+      panes:
+        - nvim
+        -
+  - server: heroku local
+  - git: git status
+  - console: bin/rails console
+  - log: tail -f log/development.log
+  - production: tmuxinator start learn2-web
