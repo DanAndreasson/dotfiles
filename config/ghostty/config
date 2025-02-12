@@ -10,7 +10,7 @@ macos-option-as-alt = left
 font-thicken = false
 
 # ghostty +list-themes
-theme = "tokyonight_moon"
+theme = "catppuccin-mocha"
 
 window-padding-x = 0
 window-padding-y = 0
