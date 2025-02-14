@@ -14,3 +14,6 @@ theme = "catppuccin-mocha"
 
 window-padding-x = 0
 window-padding-y = 0
+
+# Quick Terminal
+keybind = global:cmd+g=toggle_quick_terminal
