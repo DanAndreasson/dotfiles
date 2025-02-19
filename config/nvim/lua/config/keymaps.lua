@@ -27,3 +27,15 @@ vim.keymap.set("n", "gp", vim.lsp.buf.implementation, { silent = true, desc = "G
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true, desc = "Go to definition", nowait = true })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { silent = true, desc = "List references", nowait = true })
 vim.keymap.set("n", "gl", vim.lsp.buf.code_action, { silent = true, desc = "Code Action", nowait = true })
+
+-- Dadbod (SQL)
+vim.keymap.set("n", "<leader>db", "<CMD>DBUIToggle<CR>", { buffer = true })
+-- visually select the area under the cursor and run the query
+vim.keymap.set(
+  "n",
+  "<leader>r",
+  ":normal vip<CR><PLUG>(DBUI_ExecuteQuery)",
+  { buffer = true, noremap = true, silent = true, nowait = true }
+)
+
+vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat<CR>", { noremap = true, silent = true })
