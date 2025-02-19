@@ -1,7 +1,6 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-
 -- Jump back and forth between the last two files
 vim.keymap.set("n", "<leader><leader>", "<c-^>", { silent = true, nowait = true })
 
@@ -38,4 +37,4 @@ vim.keymap.set(
   { buffer = true, noremap = true, silent = true, nowait = true }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat<CR>i", { noremap = true, silent = true })
