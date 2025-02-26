@@ -1,18 +1,26 @@
-local sql_ft = { "sql", "mysql", "plsql" }
-
 return {
   {
-    "nvim-treesitter",
-    opts = { ensure_installed = { "sql" } },
-  },
-  {
     "mfussenegger/nvim-lint",
-    optional = true,
-    opts = function(_, opts)
-      for _, ft in ipairs(sql_ft) do
-        opts.linters_by_ft[ft] = opts.linters_by_ft[ft] or {}
-        table.insert(opts.linters_by_ft[ft], "sqlfluff")
-      end
+    config = function()
+      -- Associate the 'sqlfluff' linter with SQL filetypes.
+      require("lint").linters_by_ft = {
+        sql = { "sqlfluff" },
+      }
+
+      -- Optionally, lint on file save and text changes.
+      vim.api.nvim_create_autocmd({ "BufWritePost", "TextChanged" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("BufEnter", {
+        callback = function()
+          if vim.bo.filetype == "sql" then
+            require("lint").try_lint()
+          end
+        end,
+      })
     end,
   },
 }

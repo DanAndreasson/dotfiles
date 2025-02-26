@@ -37,4 +37,32 @@ vim.keymap.set(
   { buffer = true, noremap = true, silent = true, nowait = true }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat<CR>i", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat toggle<CR>i", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>ci", ":CodeCompanion ", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>ci", ":<C-U>CodeCompanion ", { noremap = true, silent = true })
+
+function create_file(path)
+  if path == "" then
+    return
+  end
+
+  local dir = vim.fn.fnamemodify(path, ":h")
+  if not vim.fn.isdirectory(dir) then
+    vim.fn.mkdir(dir, "p")
+  end
+
+  local ext = ""
+  if not string.match(path, "%.") then
+    ext = "." .. vim.fn.expand("%:e")
+  end
+
+  vim.cmd(string.format("edit %s%s", path, ext))
+end
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>o",
+  [[:lua create_file(vim.fn.input('New file path: ', vim.fn.expand("%:p:h") .. "/", "file"))<CR>]],
+  { noremap = true, silent = true }
+)

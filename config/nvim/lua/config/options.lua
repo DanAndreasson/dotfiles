@@ -9,3 +9,8 @@ vim.opt.laststatus = 2 -- Each split should have its own statusline
 vim.g.snacks_animate = false
 vim.g.lazyvim_picker = "telescope"
 vim.g["test#strategy"] = "vimux"
+
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "VimResized" }, {
+  pattern = "*",
+  command = "wa",
+})
