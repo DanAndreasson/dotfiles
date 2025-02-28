@@ -8,23 +8,23 @@ return {
     opts = {
       strategies = {
         chat = {
-          adapter = "openai",
+          adapter = "copilot",
         },
         inline = {
-          adapter = "copilot",
+          adapter = "openai",
         },
       },
       adapters = {
-        openai = function()
-          return require("codecompanion.adapters").extend("openai", {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                -- default = "gpt-4o",
-                default = "o3-mini-2025-01-31",
+                default = "claude-3.7-sonnet",
               },
             },
           })
         end,
+        c,
       },
     },
   },

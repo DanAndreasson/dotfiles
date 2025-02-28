@@ -37,10 +37,10 @@ vim.keymap.set(
   { buffer = true, noremap = true, silent = true, nowait = true }
 )
 
-vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat toggle<CR>i", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat toggle<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>ci", ":CodeCompanion ", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<leader>ci", ":<C-U>CodeCompanion ", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ci", ":CodeCompanion<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>ci", ":<C-U>CodeCompanion<CR>", { noremap = true, silent = true })
 
 function create_file(path)
   if path == "" then

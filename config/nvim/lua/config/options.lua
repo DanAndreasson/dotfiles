@@ -14,3 +14,6 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "VimResized" }, {
   pattern = "*",
   command = "wa",
 })
+
+vim.opt.foldenable = false
+vim.opt.foldmethod = "manual"
