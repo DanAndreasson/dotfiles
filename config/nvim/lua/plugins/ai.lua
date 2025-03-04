@@ -11,7 +11,7 @@ return {
           adapter = "copilot",
         },
         inline = {
-          adapter = "openai",
+          adapter = "copilot",
         },
       },
       adapters = {
@@ -24,7 +24,6 @@ return {
             },
           })
         end,
-        c,
       },
     },
   },

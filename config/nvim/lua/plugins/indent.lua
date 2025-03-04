@@ -4,5 +4,8 @@ return {
     indent = {
       enabled = false,
     },
+    words = {
+      enabled = false,
+    },
   },
 }
