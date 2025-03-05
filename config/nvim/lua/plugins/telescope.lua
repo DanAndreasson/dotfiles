@@ -18,6 +18,26 @@ return {
         desc = "Live Grep",
         nowait = true,
       },
+      -- TODO
+      -- Add the new keybinding for branch TODOs
+      {
+        "<leader>T",
+        function()
+          require("telescope.builtin").live_grep({
+            prompt_title = "TODOs in current branch only",
+            additional_args = function()
+              return {
+                "-e",
+                "TODO|FIXME",
+                "--",
+                "$(git diff --name-only master...HEAD)",
+              }
+            end,
+          })
+        end,
+        desc = "Find TODOs in current branch",
+        nowait = true,
+      },
     },
     opts = {
       defaults = {
@@ -34,5 +54,24 @@ return {
         },
       },
     },
+    -- Add the custom command
+    config = function(_, opts)
+      require("telescope").setup(opts)
+
+      -- Register the custom command
+      vim.api.nvim_create_user_command("TodosInBranch", function()
+        require("telescope.builtin").live_grep({
+          prompt_title = "TODOs in current branch only",
+          additional_args = function()
+            return {
+              "-e",
+              "TODO|FIXME",
+              "--",
+              "$(git diff --name-only master...HEAD)",
+            }
+          end,
+        })
+      end, { desc = "Find TODOs only in the current branch" })
+    end,
   },
 }
