@@ -17,3 +17,6 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "VimResized" }, {
 
 vim.opt.foldenable = false
 vim.opt.foldmethod = "manual"
+
+-- Don't automatically indent when moving multiple lines. Let formatters handle it
+vim.g.move_auto_indent = 0
