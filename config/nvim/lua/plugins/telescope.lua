@@ -24,18 +24,32 @@ return {
       {
         "<leader>Tb",
         function()
-          -- Get the list of modified files in the current branch
-          local git_files =
-            vim.fn.systemlist("git diff --name-only master...HEAD | xargs grep -lE 'TODO|FIXME' || true")
+          -- Get the list of tracked modified files in the current branch
+          local git_tracked_files =
+            vim.fn.systemlist("git diff --name-only master...HEAD | xargs grep -lE 'TODO|FIXME' 2>/dev/null || true")
 
-          if vim.v.shell_error ~= 0 or #git_files == 0 then
-            print("No modified files containing TODOs")
+          -- Get the list of untracked files with TODOs
+          local git_untracked_files = vim.fn.systemlist(
+            "git ls-files --others --exclude-standard | xargs grep -lE 'TODO|FIXME' 2>/dev/null || true"
+          )
+
+          -- Combine the two lists
+          local git_files = {}
+          for _, file in ipairs(git_tracked_files) do
+            table.insert(git_files, file)
+          end
+          for _, file in ipairs(git_untracked_files) do
+            table.insert(git_files, file)
+          end
+
+          if #git_files == 0 then
+            print("No files containing TODOs found in this branch")
             return
           end
 
           -- Show only files, allowing filtering by filename
           require("telescope.builtin").find_files({
-            prompt_title = "Files with TODOs (Current Branch)",
+            prompt_title = "Files with TODOs (files in branch)",
             find_command = { "echo", table.concat(git_files, "\n") },
           })
         end,
