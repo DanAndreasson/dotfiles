@@ -1,6 +1,7 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+vim.keymap.del("n", "<leader><leader>")
 -- Jump back and forth between the last two files
 vim.keymap.set("n", "<leader><leader>", "<c-^>", { silent = true, nowait = true })
 
@@ -66,3 +67,38 @@ vim.api.nvim_set_keymap(
   [[:lua create_file(vim.fn.input('New file path: ', vim.fn.expand("%:p:h") .. "/", "file"))<CR>]],
   { noremap = true, silent = true }
 )
+
+-- Function to toggle between implementation and spec files
+function ToggleSpecImplementation()
+  local current_file = vim.fn.expand("%")
+  local target_file
+
+  -- Check if current file is a spec file
+  if string.match(current_file, "_spec%.rb$") then
+    -- Current file is a spec, get the implementation file
+    target_file = string.gsub(current_file, "^spec/", "app/")
+    target_file = string.gsub(target_file, "_spec%.rb$", ".rb")
+  else
+    -- Current file is an implementation, get the spec file
+    target_file = string.gsub(current_file, "^app/", "spec/")
+    target_file = string.gsub(target_file, "%.rb$", "_spec.rb")
+  end
+
+  -- Open the target file (will create a new buffer if file doesn't exist)
+  vim.cmd("edit " .. target_file)
+end
+
+-- Map the function to a key combination (e.g., <leader>s)
+vim.keymap.set(
+  "n",
+  "<leader>h",
+  ToggleSpecImplementation,
+  { noremap = true, silent = true, desc = "Jump between spec and implementation" }
+)
+
+-- Copy current file path relative to current working directory
+vim.keymap.set("n", "<leader>cp", function()
+  local relative_path = vim.fn.expand("%:.")
+  vim.fn.setreg("+", relative_path)
+  vim.notify("Copied: " .. relative_path, vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = "Copy relative file path" })
