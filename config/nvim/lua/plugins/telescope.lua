@@ -85,6 +85,14 @@ return {
         mode = "n",
         nowait = true,
       },
+      {
+        "<leader>g",
+        function()
+          require("telescope.builtin").git_status()
+        end,
+        desc = "Changed files",
+        nowait = true,
+      },
     },
     opts = function(_, opts)
       local actions = require("telescope.actions")
@@ -94,17 +102,17 @@ return {
       opts.defaults = opts.defaults or {}
       opts.defaults.mappings = opts.defaults.mappings or {}
 
-      opts.defaults.mappings.i = vim.tbl_deep_extend("force", opts.defaults.mappings.i or {}, {
+      opts.defaults.mappings.i = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<esc>"] = actions.close,
         ["<C-l>"] = lga_actions.quote_prompt(), -- Example: Auto-quote the search term
-      })
+      }
 
-      opts.defaults.mappings.n = vim.tbl_deep_extend("force", opts.defaults.mappings.n or {}, {
+      opts.defaults.mappings.n = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
-      })
+      }
 
       -- Ensure we keep existing extensions and add live_grep_args
       opts.extensions = opts.extensions or {}
