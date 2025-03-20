@@ -2,9 +2,10 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-telescope/telescope-live-grep-args.nvim", -- Add the live_grep_args plugin
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
     keys = {
+      { "<leader><space>", false },
       {
         "<C-p>",
         function()
