@@ -1,3 +1,6 @@
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export ASDF_FORCE_PREPEND='yes'
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
@@ -6,11 +9,11 @@ git_prompt_info() {
     echo " on %{$fg_bold[green]%}$current_branch%{$reset_color%}"
   fi
 }
-setopt promptsubst
+# enable colored output from ls, etc
+export CLICOLOR=1
 export PS1='
 %{$fg_bold[red]%}%n ${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$reset_color%}at %{$fg_bold[blue]%}%2/%{$reset_color%}$(git_prompt_info) %# '
-
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+setopt promptsubst
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
@@ -28,8 +31,6 @@ done
 autoload -U colors
 colors
 
-# enable colored output from ls, etc
-export CLICOLOR=1
 
 # history settings
 setopt hist_ignore_all_dups inc_append_history
@@ -105,14 +106,6 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-export PATH="$HOME/.bin:$PATH"
-export PATH="$PATH:$(yarn global bin)"
-
-source /Users/dan/.asdf/asdf.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

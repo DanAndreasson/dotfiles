@@ -7,7 +7,7 @@ windows:
       panes:
         - nvim
         -
-  - server: heroku local
+  - server: bin/start dev
   - git: git status
   - console: bin/rails console
   - log: tail -f log/development.log
