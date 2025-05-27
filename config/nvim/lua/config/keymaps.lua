@@ -71,17 +71,17 @@ vim.api.nvim_set_keymap(
 -- Function to toggle between implementation and spec files
 function ToggleSpecImplementation()
   local current_file = vim.fn.expand("%")
-  local target_file
+  local target_file = current_file
 
   -- Check if current file is a spec file
   if string.match(current_file, "_spec%.rb$") then
     -- Current file is a spec, get the implementation file
-    target_file = string.gsub(current_file, "^spec/", "app/")
-    target_file = string.gsub(target_file, "_spec%.rb$", ".rb")
+    target_file = target_file:gsub("^spec/", "app/")
+    target_file = target_file:gsub("_spec%.rb$", ".rb")
   else
     -- Current file is an implementation, get the spec file
-    target_file = string.gsub(current_file, "^app/", "spec/")
-    target_file = string.gsub(target_file, "%.rb$", "_spec.rb")
+    target_file = target_file:gsub("^app/", "spec/")
+    target_file = target_file:gsub("%.rb$", "_spec.rb")
   end
 
   -- Open the target file (will create a new buffer if file doesn't exist)

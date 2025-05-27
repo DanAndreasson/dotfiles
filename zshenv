@@ -4,6 +4,8 @@ export EDITOR=$VISUAL
 export LANG="en_US.UTF-8"
 export ZSH=/Users/dan/.oh-my-zsh
 
+# https://github.com/fsouza/prettierd?tab=readme-ov-file#local-instance
+export PRETTIERD_LOCAL_PRETTIER_ONLY=true
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export PATH="$HOME/.bin:$PATH"

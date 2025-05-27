@@ -18,28 +18,12 @@ return {
       yaml = { "prettierd", "prettier", stop_after_first = true },
       markdown = { "prettierd", "prettier", stop_after_first = true },
       graphql = { "prettierd", "prettier", stop_after_first = true },
-      sql = { "sql-formatter", stop_after_first = true },
+      sql = { "prettierd", "prettier", stop_after_first = true },
     })
 
     opts.default_format_opts = vim.tbl_deep_extend("force", opts.default_format_opts or {}, {
       lsp_format = "fallback",
     })
-
-    -- SQL formatting configuration using sql-formatter
-    opts.formatters = opts.formatters or {}
-
-    opts.formatters["sql-formatter"] = {
-      command = "sql-formatter",
-      args = { "--language", "postgresql" },
-    }
-
-    -- Define which filetypes should use sql-formatter
-    local sql_filetypes = { "sql" } -- add more filetypes if needed
-
-    for _, ft in ipairs(sql_filetypes) do
-      opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-      table.insert(opts.formatters_by_ft[ft], "sql-formatter")
-    end
 
     return opts
   end,
