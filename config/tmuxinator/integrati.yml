@@ -1,0 +1,7 @@
+name: Integrati
+root: ~/code/integrati/
+
+windows:
+  - editor: nvim
+  - server:
+  - terminal: git status

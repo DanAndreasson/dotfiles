@@ -49,7 +49,9 @@ return {
             end,
           },
         },
-        lualine_y = {},
+        lualine_y = {
+          require("lualine.components.codecompanion"),
+        },
         lualine_z = {
           function()
             return " " .. os.date("%R")

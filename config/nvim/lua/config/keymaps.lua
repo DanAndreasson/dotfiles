@@ -40,8 +40,8 @@ vim.keymap.set(
 
 vim.api.nvim_set_keymap("n", "<leader>ch", ":CodeCompanionChat toggle<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>ci", ":CodeCompanion<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<leader>ci", ":<C-U>CodeCompanion<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ci", ":CodeCompanion<CR> #buffer ", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>ci", ":'<,'>CodeCompanion<CR>", { noremap = true, silent = true })
 
 function create_file(path)
   if path == "" then

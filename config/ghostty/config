@@ -3,6 +3,8 @@ font-family = "Monaco"
 font-size = 12
 window-title-font-family = "Monaco"
 
+cursor-opacity=0.5
+
 # macos-titlebar-style = tabs
 # macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = left

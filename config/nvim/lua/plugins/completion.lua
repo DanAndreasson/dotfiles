@@ -6,9 +6,8 @@ return {
         codecompanion = { "codecompanion" },
       },
     },
-    
+
     keymap = {
-      preset = "default",
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
       ["<Tab>"] = { "accept", "fallback" },
