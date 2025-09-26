@@ -1,19 +1,27 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function(_, opts)
-    opts.diagnostics.virtual_text = false
-    opts.inlay_hints = { enabled = false }
-
-    -- Add Ruby LSP configuration
-    opts.servers = opts.servers or {}
-    opts.servers.ruby_lsp = {
-      init_options = {
-        addonSettings = {
-          ["Ruby LSP Rails"] = {
-            enablePendingMigrationsPrompt = false,
+  ---@class PluginLspOpts
+  opts = {
+    -- Global LSP settings
+    diagnostics = {
+      virtual_text = false,
+    },
+    inlay_hints = {
+      enabled = false,
+    },
+    -- Server configurations
+    ---@type lspconfig.options
+    servers = {
+      -- Ruby LSP configuration
+      ruby_lsp = {
+        init_options = {
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
           },
         },
       },
-    }
-  end,
+    },
+  },
 }
